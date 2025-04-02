@@ -32,7 +32,7 @@ describe('TaskController', () => {
         const response = await request(app).get('/tasks');
         const responseTasks = response.body.tasks as Task[];
         expect(response.status).toBe(200);
-        expect(responseTasks[0]._id).toEqual(mockTasks[0]._id);
+        expect(responseTasks[0]._id).toEqual(mockTasks[0]._id);//TODO check whole payload
         expect(response.body.total).toBe(1);
     });
 

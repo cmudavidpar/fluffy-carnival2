@@ -28,7 +28,7 @@ function App() {
         timeZoneName: 'short',
     };
 
-    const baseUrl = 'http://localhost:5000';
+    const baseUrl = 'http://localhost:5000';//TODO read from config or env variable
     const fetchTasks = async (page: number = currentPage) => {
         setLoading(true);
         try {

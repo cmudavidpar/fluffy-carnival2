@@ -9,7 +9,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 // Mock axios
 jest.mock('axios');
 const mockedAxios = jest.mocked(axios, true );
-
+const baseUrl = 'http://localhost:5000';//TODO read from config or env variable
 mockedAxios.get.mockResolvedValue({ data: {} });
 
 // Mock task data with pagination
@@ -102,7 +102,7 @@ describe('App Component', () => {
 
     await waitFor(() => {
       expect(screen.getByText('Page 2 of 2')).toBeInTheDocument();
-      expect(mockedAxios.get).toHaveBeenCalledWith('http://localhost:5000/tasks', {
+      expect(mockedAxios.get).toHaveBeenCalledWith(`${baseUrl}/tasks`, {
         params: { page: 2, limit: 10 }
       });
     });
@@ -121,7 +121,7 @@ describe('App Component', () => {
     await userEvent.click(screen.getByText('Add Task'));
 
     expect(mockedAxios.post).toHaveBeenCalledWith(
-        'http://localhost:5000/tasks',
+        `${baseUrl}/tasks`,
         expect.any(Object)
     );
 
@@ -138,7 +138,7 @@ describe('App Component', () => {
       fireEvent.click(deleteButton);
     });
 
-    expect(mockedAxios.delete).toHaveBeenCalledWith('http://localhost:5000/tasks/1');
+    expect(mockedAxios.delete).toHaveBeenCalledWith(`${baseUrl}/tasks/1`);
     // Verify that tasks are refreshed after deletion
     expect(mockedAxios.get).toHaveBeenCalledTimes(2);
   });
@@ -161,7 +161,7 @@ describe('App Component', () => {
     await userEvent.click(screen.getByText('Update'));
 
     expect(mockedAxios.put).toHaveBeenCalledWith(
-        'http://localhost:5000/tasks/1',
+        `${baseUrl}/tasks/1`,
         expect.any(Object)
     );
 
