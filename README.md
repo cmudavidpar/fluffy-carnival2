@@ -1,14 +1,22 @@
 # To Run
 Run the following command in the backend directory to start the backend server:
+
 ```npm install```
+
 ```npm dev```
+
 To run tests:
+
 ```npm test```
 
 Run the following command in the frontend directory to start the frontend server:
+
 ```npm install```
+
 ```npm start```
+
 To run tests:
+
 ```npm test```
 
 ## Tools used:
